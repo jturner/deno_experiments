@@ -9,7 +9,7 @@ import {
 const App = () => (
   <html>
     <head>
-      <link rel="stylesheet" href="/style.css" />
+      <link rel="stylesheet" href="style.css" />
     </head>
     <body>
       <div>
@@ -22,7 +22,7 @@ const App = () => (
 const NotFound = () => (
   <html>
   <head>
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div>
@@ -35,10 +35,5 @@ const NotFound = () => (
 serve({
   "/": () => jsx(<App />),
   404: () => jsx(<NotFound />, { status: 404 }),
-  "/style.css": serveStatic("style.css", {
-    baseUrl: import.meta.url,
-    intervene: (request, response) => {
-      return response;
-    },
-  }),
+  "/style.css": serveStatic("style.css", { baseUrl: import.meta.url }),
 });
